@@ -12,9 +12,11 @@ where `eltype(g) = T isa SVector{D}`.
 """
 abstract type AbstractBlockGrid{T,D} <: AbstractArray{T,D} end
 
+export Eye, Kron
 export blockgrid, skeleton
 
 include("blockgrid.jl")
+include("kron.jl")
 include("plotrecipes.jl")
 
 end # module
