@@ -13,7 +13,7 @@ where `eltype(g) = T isa SVector{D}`.
 abstract type AbstractBlockGrid{T,D} <: AbstractArray{T,D} end
 
 export Eye, Kron
-export blockgrid, skeleton
+export blockgrid, metrics, skeleton
 
 include("blockgrid.jl")
 include("kron.jl")

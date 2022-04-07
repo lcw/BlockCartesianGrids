@@ -47,5 +47,12 @@ end
 
 skeleton(grid::BlockGrid) = grid.skeleton
 block(grid::BlockGrid) = grid.block
+function metrics(grid::BlockGrid)
+    D = length(skeleton(grid))
+    diffs = diff.(skeleton(grid))
+    Js = ntuple(i -> reshape(diffs[i], ntuple(j -> j == i + D ? length(diffs[i]) : 1, 2D)), D)
+    rxs = ntuple(i -> inv.(Js[i]), D)
+    return (rxs..., Js...)
+end
 
 blockgrid(block, skeleton) = BlockGrid(block, skeleton)
